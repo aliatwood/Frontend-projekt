@@ -1,0 +1,37 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.hero-container{
+    background-color: $primary-color;
+    @include flex-center-column;
+    color: $text-light;
+    .hero-text{
+
+        h1{
+            text-align: center;
+        }
+    }
+
+    .hero-img{
+
+        img{
+            max-width: 20rem;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .hero-btn{
+        text-decoration: none;
+        color: $secondary-color;
+        border: 2px solid $primary-color;
+        border-radius: 12px;
+        padding: 6px 12px;
+        background: red;
+        cursor: pointer;
+
+        &:hover{
+            background-color: $secondary-color;
+        }
+    }
+}

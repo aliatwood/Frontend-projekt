@@ -8,6 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else{
             links[i].classList.remove("active");
-        }
-    }    
-})
+        };
+    };    
+});

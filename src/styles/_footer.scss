@@ -1,0 +1,32 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+footer{
+    background-color: $primary-color;
+    color: $text-light;
+    text-align: center;
+    padding: $spacing-medium $spacing-large;
+
+    @include flex-center-spacebetween;
+
+    p{
+        margin: 0;
+        font-size: 1rem;
+        opacity: 0.7;
+    }
+
+    nav{
+        display: flex;
+        gap: $spacing-medium;
+
+        a{
+            text-decoration: none;
+            color: $secondary-color;
+            font-size: 1rem;
+
+            &:hover{
+                color: $active-color;
+            }
+        }
+    }
+}

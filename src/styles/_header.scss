@@ -11,6 +11,7 @@ header{
     width: 100%;
     background-color: $primary-color;
     padding: 1rem 1.5rem;
+    position: relative;
     nav{
         @include flex-center;
         gap: 3rem;
@@ -33,4 +34,21 @@ header{
             background-color: $active-color
         }
     }
+
+    .nav-logo{
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        background: none;
+        padding: 0;
+        position: absolute;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    nav a:has(.nav-logo){
+    border: none;
+    background: none;
+    padding: 0;
+}
 }

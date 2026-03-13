@@ -34,3 +34,37 @@ li{
         opacity: 1;
     }
 }
+
+.hero-img img {
+    max-width: 20rem;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid $secondary-color;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+        box-shadow: 0 5px 15px rgba($secondary-color, 0.2);
+    }
+    50% {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 30px rgba($secondary-color, 0.4);
+    }
+    100% {
+        transform: translateY(0px);
+        box-shadow: 0 5px 15px rgba($secondary-color, 0.2);
+    }
+}
+
+.hero-btn {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%   {transform: scale(1);};
+    50%  {transform: scale(1.05);};
+    100% {transform: scale(1);};
+}

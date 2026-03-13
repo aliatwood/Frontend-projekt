@@ -1,0 +1,36 @@
+@use "variables" as *;
+
+li{
+    font-size: 1.5rem;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+    animation: li 10s ease infinite;
+
+    &:nth-child(1) { animation-delay: 0s; }
+    &:nth-child(2) { animation-delay: 3s; }
+    &:nth-child(3) { animation-delay: 6s; }
+}
+@keyframes li{
+    0%{
+        letter-spacing: 0px;
+        color: $text-light;
+        opacity: 0.7;
+    }
+    30%{
+        letter-spacing: 10px;
+        color: $secondary-color;
+        opacity: 1;
+    }
+    60%{
+        letter-spacing: 0px;
+        color: $text-light;
+        opacity: 0.7;
+    }
+    100%{
+        letter-spacing: 0px;
+        color: $text-light;
+        opacity: 1;
+    }
+}

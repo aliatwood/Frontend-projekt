@@ -52,3 +52,10 @@ header{
     padding: 0;
 }
 }
+
+@media (max-width: $breakpoint-mobile) {
+    header nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

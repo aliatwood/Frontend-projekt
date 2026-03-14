@@ -1,5 +1,7 @@
 import "./styles/styles.scss";
-
+/**
+ * Markerar den aktiva navigeringslänk baserat på aktuell url
+ */
 document.addEventListener("DOMContentLoaded", () => {
     let links = document.querySelectorAll("nav a");
     for (let i = 0; i < links.length; i++) {
@@ -11,6 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+/**
+ * Initiserar utforska-sidan med popup, sökfunktion och standardsökning
+ * Körs bara om sökinput finns på sidan
+ */
 if (document.getElementById("search-input")) {
     const popup = document.getElementById("popupMovie");
     const popupTitle = popup.querySelector(".popup-title");
@@ -22,6 +28,9 @@ if (document.getElementById("search-input")) {
     const popupVotes = popup.querySelector(".popup-votes");
     const popupLanguage = popup.querySelector(".popup-language");
 
+    /**
+     * Lyssnar på klick på filmkort och visar popup med info
+     */
     document.querySelector(".container").addEventListener("click", e => {
         const card = e.target.closest(".movie-card");
         if (!card) return;
@@ -55,6 +64,10 @@ if (document.getElementById("search-input")) {
     getData();
 }
 
+/**
+ * Initierar favoritsidan och visar sparade favoriter från localstorage
+ * Körs bara om cotainer finns och sökinput ej finns
+ */
 if (document.querySelector(".container") && !document.getElementById("search-input")) {
     const container = document.querySelector(".container");
     const favs = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -72,6 +85,9 @@ if (document.querySelector(".container") && !document.getElementById("search-inp
                 <button class="fav-btn">★</button>
             `;
 
+            /**
+             * Tar bort film från favoriter när stjärnknappen klickas.
+             */
             card.querySelector(".fav-btn").addEventListener("click", () => {
                  let favs = JSON.parse(localStorage.getItem("favorites")) || [];
                  favs = favs.filter(f => f.title !== movie.title);
@@ -90,6 +106,11 @@ if (document.querySelector(".container") && !document.getElementById("search-inp
     }
 }
 
+/**
+ * Hämtar filmdata från omdb och tmdb api och skapar filmkort
+ * @param {string} query 
+ * @returns {Promise<void>}
+ */
 async function getData(query = "Harry Potter") {
     try {
         const container = document.querySelector(".container");
@@ -101,6 +122,16 @@ async function getData(query = "Harry Potter") {
         if (!res2.ok) throw new Error("TMDB request failed");
         let data2 = await res2.json();
 
+        /**
+         * 
+         * @param {string} title - filmens titel
+         * @param {string} poster - url till filmens poster
+         * @param {string} overview - beskrivning av filmen
+         * @param {string} year - utgivningsår
+         * @param {string} rating - betyg
+         * @param {string} voteCount - antal röster
+         * @param {string} language -filmens språk
+         */
         function createCard(title, poster, overview, year, rating, voteCount, language) {
             const card = document.createElement("div");
             card.classList.add("movie-card");
@@ -132,6 +163,9 @@ async function getData(query = "Harry Potter") {
             const favs = JSON.parse(localStorage.getItem("favorites")) || [];
             if (favs.find(f => f.title === title)) favBtn.textContent = "★";
 
+            /**
+             * Lägger till / tar bort film från favoriter i localstorage
+             */
             favBtn.addEventListener("click", e => {
                 e.stopPropagation();
                 let favs = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -173,6 +207,10 @@ async function getData(query = "Harry Potter") {
             createCard(movie.title, poster, overview, year, movie.vote_average.toFixed(1), movie.vote_count, movie.original_language.toUpperCase());
         }
 
+        /**
+         * Visar en kortvarig toastnotis på skärmen
+         * @param {string} message 
+         */
         function showToast(message) {
         const toast = document.createElement("div");
         toast.classList.add("toast");

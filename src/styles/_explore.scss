@@ -1,0 +1,43 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.search{
+    @include flex-center;
+    gap: 1rem;
+    margin: 1rem;
+
+    label{
+        font-weight: bold;
+    }
+
+    #search-input{
+        padding: 4px 16px;
+        border-radius: 8px;
+        border: 1px solid $text-dark;
+    }
+
+
+    .btn{
+        text-decoration: none;
+        color: $text-dark;
+        border: 2px solid $secondary-color;
+        border-radius: 12px;
+        padding: 10px 24px;
+        background-color: $secondary-color;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover{
+            background-color: $active-color;
+            border-color: $active-color;
+            color: $text-light;
+        }
+    }
+}
+
+@media (max-width:$breakpoint-mobile) {
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

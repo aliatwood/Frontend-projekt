@@ -74,3 +74,33 @@
         transform: scale(1);
     }
 }
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $secondary-color;
+    color: $text-dark;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-weight: bold;
+    z-index: 9999;
+    animation: fadeInOut 2.5s ease forwards;
+}
+
+@keyframes fadeInOut {
+
+    0%{
+        opacity: 0; transform: translateX(-50%) translateY(10px);
+    }
+    15%{
+        opacity: 1; transform: translateX(-50%) translateY(0)
+    }
+    75%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
